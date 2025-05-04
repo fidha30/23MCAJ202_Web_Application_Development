@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Comment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: blanchedalmond;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background:yellowgreen;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #5c6bc0;
+            color: white;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #3949ab;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Submit a Comment</h2>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required 
+                pattern="[A-Za-z\s]{3,}" 
+                title="Name must be at least 3 characters long and contain only letters and spaces."
+            >
+
+            <label for="email">Email:</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" 
+                title="Please enter a valid email address (e.g., user@example.com)."
+            >
+
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
