@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(179, 177, 177);
+        }
+        form{
+            max-width: 600px;
+            height: auto;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #681616;
+        }
+        input{
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px 0;
+            margin: auto;
+        }
+        .input-g{
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .g{
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        button{
+            color: rgb(254, 5, 5);
+            background-color: black;
+        }
+        .button-c{
+           display: flex;
+           justify-content: center;
+           align-items: center;margin-top: 10px;
+        }
+        .error{
+            color: red;
+            display: block;
+        }
+        label{
+             display: block;
+             padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationform">
+        <div>
+            <h2 style="color: brown;">Register here and confirm your seat</h2>
+            <div class="input-g">
+                <span id="nameError" class="error"></span>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name">
+            </div>
+            <div class="input-g">
+                <span id="ageError" class="error"></span>
+                <label>Age</label>
+                <input type="number" name="age" id="age" placeholder="Enter you age">
+            </div>
+            <div>
+                <label class="input-g" for="gender">Gender:</label><br>
+                <div  class="g">
+                <label for="male">Male</label>
+                <input type="radio" id="male" value="male" name="gender">
+                <label for="female">Female</label>
+                <input type="radio" id="female" value="female" name="gender">
+                <label for="others">Others</label>
+                <input type="radio" id="others" value="others" name="gender">
+                </div>
+            </div>
+            <div class="input-g">
+                <span id="contactError"></span>
+                <label>Contact details</label>
+                <input type="number" id="contact" placeholder="Enter your contact number">
+            </div>
+            <div class="input-g">
+                <span id="seatError" class="error"></span>
+                <label>Select the seat number</label>
+                <input type="number" id="number" placeholder="Enter your number of seats">
+            </div>
+            <div class="button-c">
+                <button type="submit">Register</button>
+            </div>
+        </div>
+    </form>
+    <script>
+        document.getElementById("registrationform").addEventListener("submit", function(event){
+        event.preventDefault();
+
+        document.getElementById("nameError").innerText="";
+        document.getElementById("ageError").innerText="";
+        document.getElementById("contactError").innerText="";
+        document.getElementById("seatError").innerText="";
+
+        let name = document.getElementById("name").value.trim();
+        let age = document.getElementById("age").value.trim();
+        let contact = document.getElementById("contact").value.trim();
+        let number = document.getElementById("number").value.trim();
+        
+        let isValid = true;
+
+        if(name === ""){
+            document.getElementById("nameError").innerText = "Name is required";
+            isValid = false;
+        }
+        if(age === ""){
+            document.getElementById("ageError").innerText = "Age is required";
+            isValid = false;
+        }
+        if(contact === ""){
+            document.getElementById("contactError").innerText = "Contact detail is required";
+            contactError.style.color = "red"
+            isValid = false;
+        }else if(contact.length < 10){
+            document.getElementById("contactError").innerText = "Length must be 10 in digits";
+            contactError.style.color = "red"
+            isValid = false;
+        }else{
+            document.getElementById("contactError").innerText = "Valid contact number";
+            contactError.style.color = "green"
+        }
+        if(number === ""){
+            document.getElementById("seatError").innerText = "Required your number of seat";
+            isValid = false;
+        }
+        if(isValid){
+            alert("Registration Successfull ! Thank You..");
+            document.getElementById("registrationform").reset();
+            seatError.innerText = "";
+        }
+        });
+    </script>
+</body>
+</html>
